@@ -122,5 +122,8 @@
       }
     }
   },
-  "defaultProject": "Sofa"
+  "defaultProject": "Sofa",
+  "cli": {
+    "analytics": false
+  }
 }

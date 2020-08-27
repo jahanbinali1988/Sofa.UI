@@ -1,0 +1,76 @@
+@import url("https://fonts.googleapis.com/css?family=Lato");
+ * {
+	 box-sizing: border-box;
+}
+ a {
+	 color: #5266dd;
+	 text-decoration: none;
+}
+ body {
+	 background: #f9f9f9;
+	 font-family: "Lato", Helvetica, Arial, sans-serif;
+	 font-size: 14px;
+	 line-height: 1.5;
+	 margin: 0;
+}
+ .wrapper {
+	 margin: 0 auto;
+	 padding: 32px 0 15px;
+	 width: 300px;
+}
+/************************ HEADER */
+ .header {
+	 text-align: center;
+}
+ .header h1 {
+	 color: #24292e;
+	 font-size: 24px;
+	 font-weight: 300;
+	 letter-spacing: -0.5px;
+}
+/************************ FORM */
+ .form {
+	 background: #fff;
+	 border: 1px solid #ddd;
+	 border-radius: 4px;
+	 padding: 10px 15px;
+	 font-size: 15px;
+}
+ .form label {
+	 color: #24292e;
+	 font-size: 12px;
+	 font-weight: 600;
+}
+ .form label[for="password"] span {
+	 color: #0366d6;
+	 float: right;
+}
+ .form input {
+	 border-radius: 2px;
+	 margin: 10px 0;
+	 padding: 9px 7px;
+	 width: 100%;
+}
+ .form .field {
+	 border: 1px solid #ddd;
+}
+ .form .field:focus {
+	 border: 1px solid #0366d9;
+	 outline-color: rgba(37, 149, 255, 0.2);
+	 outline-style: solid;
+	 outline-width: 3px;
+}
+ .form .button {
+	 display: block;
+	 text-align: center;
+	 background: #2db84c;
+	 border: 1px solid #28a444;
+	 border-radius: 2px;
+	 color: #fff;
+	 cursor: pointer;
+	 font-weight: 600;
+}
+ .form .button:hover {
+	 background: #28a444;
+}
+ 

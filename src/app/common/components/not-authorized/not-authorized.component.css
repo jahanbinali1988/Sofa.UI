@@ -1,0 +1,177 @@
+body {
+  background-color: #fff1d0;
+}
+/*branches*/
+.branch-shadow {
+  fill: #ece0c2;
+  z-index: -1;
+}
+.main-branch#low, .branch#down-2, .branch#down-3 {
+  fill: #a19270;
+}
+.main-branch#high {
+  fill: #b09f7a;
+}
+.branch#down-1 {
+  fill: #938566;
+}
+.branch#high-1 {
+  fill: #7d715a;
+}
+/*LEAVES*/
+.leaves#down-1-1, .leaves#down-2-2, .leaves#down-3-2, .leaves#up-1-2 {
+  fill: #548f6d;
+}
+.leaves#down-1-2, .leaves#down-2-1, .leaves#down-3-1, .leaves#up-1-1 {
+  fill: #3d7a59;
+}
+/*paws*/
+.paws#left, .paws#right {
+  fill: #8e7b53;
+}
+.paws#l-1, .paws#l-3, .paws#r-1, .paws#r-3 {
+  fill: #b49b6b;
+}
+.paws#l-2, .paws#l-4, .paws#r-2, .paws#r-4 {
+  fill: #968258;
+}
+/*head*/
+.head#crest {
+  fill: #923964;
+}
+.head#h-1 {
+  fill: #72274a;
+}
+.head#h-2 {
+  fill: #bb4c7c;
+}
+.head#h-3 {
+  fill: #ad4573;
+}
+.head#h-4 {
+  fill: #ad4572;
+}
+.head#h-5 {
+  fill: #692042;
+}
+.head#h-6 {
+  fill: #500d2e;
+}
+.head#h-7 {
+  fill: #571234;
+}
+.head#h-8 {
+  fill: #6e2343;
+}
+.head#h-9 {
+  fill: #94395e;
+}
+.head#h-10 {
+  fill: #ae456e;
+}
+.head#h-11 {
+  fill: #bb4c79;
+}
+/*beak*/
+.beak#bk-1 {
+  fill: #c9bfa7;
+}
+.beak#bk-2 {
+  fill: #ede1c3;
+}
+.beak#bk-3 {
+  fill: #ded2b7;
+}
+.beak#bk-4 {
+  fill: #a9a18e;
+}
+.beak#bk-5 {
+  fill: #898374;
+}
+.body#b-1 {
+  fill: #6d2244;
+}
+.body#b-2 {
+  fill: #772949;
+}
+.body#b-3 {
+  fill: #4f0d2b;
+}
+.body#b-4 {
+  fill: #953a5c;
+}
+.body#b-5 {
+  fill: #6f2442;
+}
+.body#b-6 {
+  fill: #9b3c63;
+}
+.body#b-7, .body#b-9 {
+  fill: #c34f7b;
+}
+.body#b-8 {
+  fill: #af466c;
+}
+.body#b-10 {
+  fill: #772a49;
+}
+.body#b-11 {
+  fill: #883351;
+}
+.body#b-12 {
+  fill: #7c2c48;
+}
+.body#b-13 {
+  fill: #963a59;
+}
+.body#b-14 {
+  fill: #b14666;
+}
+.body#b-15 {
+  fill: #963a56;
+}
+.body#b-16 {
+  fill: #70253c;
+}
+.body#b-17 {
+  fill: #963a58;
+}
+.body#b-18 {
+  fill: #89334e;
+}
+.tail#t-1 {
+  fill: #8a344c;
+}
+.tail#t-2 {
+  fill: #712638;
+}
+.tail#t-3 {
+  fill: #7d2d43;
+}
+.tail#t-4 {
+  fill: #641d30;
+}
+.tail#t-5, .tail#t-8 {
+  fill: #722636;
+}
+.tail#t-6 {
+  fill: #722635;
+}
+.tail#t-7 {
+  fill: #a74255;
+}
+.tail#t-9 {
+  fill: #8b3545;
+}
+.tail#t-10 {
+  fill: #863240;
+}
+.tail#t-11 {
+  fill: #9a3b4c;
+}
+polygon:hover {
+  opacity: 0.5;
+}
+.svgHolder {
+  padding-left: 25%;
+}
