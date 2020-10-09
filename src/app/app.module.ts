@@ -10,9 +10,6 @@ import { CommonModule } from '@angular/common';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-// font awsome
-import { AngularFontAwesomeModule } from 'angular-font-awesome';
-
 import { AppComponent } from './components/app/app.component';
 import { MenuComponent } from './common/Components/menu/menu.component';
 import { LoginComponent } from './common/Components/login/login.component';
@@ -39,7 +36,6 @@ import { ContactUsComponent } from './common/components/contact-us/contact-us.co
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    AngularFontAwesomeModule,
     NotifierModule,
     HttpClientModule,
     RouterModule.forRoot(appRoutes),

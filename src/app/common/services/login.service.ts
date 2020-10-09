@@ -11,18 +11,23 @@ export class LoginService {
 
   httpOptions = {
     headers: new HttpHeaders({
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/x-www-form-urlencoded',
+      'Connection': 'keep-alive',
+      'Content-Length': '123'
     })
   };
 
   constructor( private http: HttpClient ) { }
 
   Login(login: Login) {
-    return this.http.post('http://localhost:52212/api/auth/Login', JSON.stringify(login), this.httpOptions);
+    console.log('ok');
+    var result = this.http.post('http://localhost:63926/connect/token', JSON.stringify(login), this.httpOptions);
+    console.log(result);
+    return result;
   }
 
   GetPermissions(username: string): Observable<PermissionModel> {
-    const result = this.http.post<PermissionModel>('http://localhost:52212/api/auth/GetPermissions', JSON.stringify(username),
+    const result = this.http.post<PermissionModel>('http://localhost:63926/api/auth/GetPermissions', JSON.stringify(username),
       this.httpOptions);
     return result;
   }

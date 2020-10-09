@@ -1,76 +1,37 @@
-@import url("https://fonts.googleapis.com/css?family=Lato");
- * {
-	 box-sizing: border-box;
-}
- a {
-	 color: #5266dd;
-	 text-decoration: none;
-}
- body {
-	 background: #f9f9f9;
-	 font-family: "Lato", Helvetica, Arial, sans-serif;
-	 font-size: 14px;
-	 line-height: 1.5;
-	 margin: 0;
-}
- .wrapper {
-	 margin: 0 auto;
-	 padding: 32px 0 15px;
-	 width: 300px;
-}
-/************************ HEADER */
- .header {
-	 text-align: center;
-}
- .header h1 {
-	 color: #24292e;
-	 font-size: 24px;
-	 font-weight: 300;
-	 letter-spacing: -0.5px;
-}
-/************************ FORM */
- .form {
-	 background: #fff;
-	 border: 1px solid #ddd;
-	 border-radius: 4px;
-	 padding: 10px 15px;
-	 font-size: 15px;
-}
- .form label {
-	 color: #24292e;
-	 font-size: 12px;
-	 font-weight: 600;
-}
- .form label[for="password"] span {
-	 color: #0366d6;
-	 float: right;
-}
- .form input {
-	 border-radius: 2px;
-	 margin: 10px 0;
-	 padding: 9px 7px;
-	 width: 100%;
-}
- .form .field {
-	 border: 1px solid #ddd;
-}
- .form .field:focus {
-	 border: 1px solid #0366d9;
-	 outline-color: rgba(37, 149, 255, 0.2);
-	 outline-style: solid;
-	 outline-width: 3px;
-}
- .form .button {
-	 display: block;
-	 text-align: center;
-	 background: #2db84c;
-	 border: 1px solid #28a444;
-	 border-radius: 2px;
-	 color: #fff;
-	 cursor: pointer;
-	 font-weight: 600;
-}
- .form .button:hover {
-	 background: #28a444;
-}
- 
+body{
+	background: #00589F;
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00589F', endColorstr='#0073CF', GradientType=0);
+	background: -webkit-linear-gradient(to bottom, #00589F 50%, #0073CF) !important;
+	background: -moz-linear-gradient(to bottom, #00589F 50%, #0073CF) !important;
+	background: -ms-linear-gradient(to bottom, #00589F 50%, #0073CF) !important;
+	background: -o-linear-gradient(to bottom, #00589F 50%, #0073CF) !important;
+	background: linear-gradient(to bottom, #00589F 50%, #0073CF) !important;
+	color: white;
+  }
+  
+  div.well{
+	height: 250px;
+  } 
+  
+  .Absolute-Center {
+	margin: auto;
+	position: absolute;
+	top: 0; left: 0; bottom: 0; right: 0;
+  }
+  
+  .Absolute-Center.is-Responsive {
+	width: 50%; 
+	height: 50%;
+	min-width: 200px;
+	max-width: 400px;
+	padding: 40px;
+  }
+  
+  #logo-container{
+	padding-left: 18%;
+	margin: auto;
+	margin-bottom: 10px;
+	width:200px;
+	height:30px;
+	background-image:url('https://www.creativefabrica.com/wp-content/uploads/2018/11/Sofa-Logo-by-yahyaanasatokillah-580x387.jpg');
+  }

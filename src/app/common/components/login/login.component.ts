@@ -29,6 +29,10 @@ export class LoginComponent implements OnInit {
     const login: Login = {
       UserName: this.form.get('UserName').value,
       Password: this.form.get('Password').value,
+      client_id: 'AndroidClient',
+      client_secret: 'secret',
+      grant_type: 'password',
+      scope: 'api+offline_access'
     };
     if (localStorage.getItem('jwt') == null) {
       this.loginService.Login(login).subscribe(response => {
@@ -38,18 +42,18 @@ export class LoginComponent implements OnInit {
             localStorage.setItem('jwt', token);
             this.invalidLogin = false;
           }
-          this.router.navigate(['/internalFlights/']);
+          this.router.navigate(['/teacher/']);
         }
       }, err => {
           this.invalidLogin = true;
         });
     } else {
-      this.router.navigate(['/internalFlights/']);
+      this.router.navigate(['/teacher/']);
     }
 
     this.loginService.GetPermissions(login.UserName).subscribe(response => {
       const permissionString = (<PermissionModel>response).Permissions;
-      localStorage.setItem('SamtikPermissions', permissionString);
+      localStorage.setItem('SofaPermissions', permissionString);
     });
   }
 
