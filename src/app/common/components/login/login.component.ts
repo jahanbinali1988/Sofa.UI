@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { TokenModel } from '../..//models/base/Token';
-import { Login } from '../../models/base/login';
-import { PermissionModel } from '../../models/base/PermissionModel';
-import { Router } from '@angular/router';
+import { FormBuilder, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Login } from '../../models/base/Login';
+import { ConfigService } from '../../services/Config.Service';
 import { LoginService } from '../../services/login.service';
+import { BrowserStorage } from '../../utilities/storage/browser-storage';
+import { Notification } from '../../utilities/notification/notification';
 
 @Component({
   selector: 'app-login',
@@ -12,55 +13,50 @@ import { LoginService } from '../../services/login.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  invalidLogin: boolean;
-  form: FormGroup;
-
-  constructor(private loginService: LoginService, private fb: FormBuilder, private router: Router) {
-    this.form = fb.group({
-      UserName: ['', Validators.required],
-      Password: ['', [Validators.required]]
-    });
+  config;
+  returnUrl: string = this.route.snapshot.queryParams['returnUrl'] + '/';
+  login = this.fb.group({
+    username: ['', Validators.required],
+    password: ['',[Validators.required, Validators.minLength(6)]]
+  });
+  
+  constructor(private fb: FormBuilder, 
+    private configService: ConfigService,
+    private notifier: Notification,
+    private browserStorage : BrowserStorage,
+    private loginService : LoginService, 
+    private route: ActivatedRoute,
+    private router: Router) {
+      this.config = configService.Get()
    }
-
-  ngOnInit() {
+  
+  ngOnInit(): void {
   }
 
-  Login() {
-    const login: Login = {
-      UserName: this.form.get('UserName').value,
-      Password: this.form.get('Password').value,
-      client_id: 'AndroidClient',
-      client_secret: 'secret',
-      grant_type: 'password',
-      scope: 'api+offline_access'
+  onSubmit(){
+    const loginObject: Login = {
+      UserName: this.Username.value,
+      Password: this.Password.value,
     };
-    if (localStorage.getItem('jwt') == null) {
-      this.loginService.Login(login).subscribe(response => {
-        if (response != null) {
-          if (localStorage.getItem('jwt') == null) {
-            const token = (<TokenModel>response).Token;
-            localStorage.setItem('jwt', token);
-            this.invalidLogin = false;
-          }
-          this.router.navigate(['/teacher/']);
-        }
-      }, err => {
-          this.invalidLogin = true;
-        });
-    } else {
-      this.router.navigate(['/teacher/']);
-    }
-
-    this.loginService.GetPermissions(login.UserName).subscribe(response => {
-      const permissionString = (<PermissionModel>response).Permissions;
-      localStorage.setItem('SofaPermissions', permissionString);
-    });
+    
+    this.loginService.Login(loginObject).subscribe(res => {
+      console.log(res);
+      if(res.access_token != ""){
+        this.notifier.success("شما وارد سیستم شدید");
+        this.browserStorage.set(this.config.id_token, res.access_token);
+        this.browserStorage.set(this.config.refresh_token, res.refresh_token);
+      }else{
+      
+      }
+    }), error=> {
+      this.notifier.warn("مشخصات وارد شده صحیح نمی باشند");
+    };
   }
 
-  get UserName() {
-    return this.form.get('UserName');
+  get Username() {
+    return this.login.controls.username;
   }
   get Password() {
-    return this.form.get('Password');
+    return this.login.controls.password;
   }
 }

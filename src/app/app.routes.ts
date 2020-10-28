@@ -8,7 +8,6 @@ import { TeacherModule } from 'src/@modules/Teacher/module';
 
 export const appRoutes = [
     { path: '', component: HomeComponent },
-    { path: 'adminstrator', loadChildren: '@modules/Adminstrartor/module#AdminstrartorModule' },
     { path: 'teacher', loadChildren: ()=> TeacherModule },
     { path: 'about-us', component: AboutUsComponent },
     { path: 'contact-us', component: ContactUsComponent },
