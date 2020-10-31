@@ -1,6 +1,6 @@
 export class Config {
     API_Url: string;
-    server: string;
+    Server: string;
     TOKEN_ENDPOINT: string;
     REVOCATION_ENDPOINT: string;
     USERINFO_ENDPOINT: string;
@@ -8,4 +8,6 @@ export class Config {
     CLIENT_SECRET: string;
     GRANT_TYPE: string;
     SCOPE: string;
+    Token : string;
+    Refresh_Token : string;
   }

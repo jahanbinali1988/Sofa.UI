@@ -8,13 +8,20 @@ import {
 import {Observable, of} from 'rxjs';
 import {Router} from '@angular/router';
 import {catchError} from 'rxjs/internal/operators';
-import { NotifierService } from 'angular-notifier';
-
+import { ConfigService } from '../../services/Config.Service';
+import { Config } from '../../models/base/config';
+import { BrowserStorage } from '../storage/browser-storage';
+import { Notification } from 'src/app/common/utilities/notification/notification'
+ 
 @Injectable()
 
 export class ServiceAuthInterceptor implements HttpInterceptor {
-
-   constructor( private router: Router, private notifier: NotifierService) {
+    config : Config;
+   constructor( private router: Router,
+    private configService: ConfigService,
+    private browserStorage: BrowserStorage,
+    private notifier: Notification) {
+        this.config = configService.Get();
     }
 
     /**
@@ -24,10 +31,11 @@ export class ServiceAuthInterceptor implements HttpInterceptor {
      * @returns {Observable<A>}
      */
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    if (localStorage.getItem('jwt')) {
+        var token = this.browserStorage.get(this.config.Token);
+        if (token) {
         request = request.clone({
             setHeaders: {
-                jwt: `Bearer ` + localStorage.getItem('jwt')
+                jwt: `Bearer ` + token
             }
         });
     }
@@ -49,17 +57,17 @@ export class ServiceAuthInterceptor implements HttpInterceptor {
     private handleAuthError(err: HttpErrorResponse): Observable<any> {
         // handle your auth error or rethrow
         if (err.status === 403) {
-            this.router.navigateByUrl('notAuthorized');
-            this.notifier.notify( 'info', 'شما سطح دسترسی برای انجام عملیات مزبور را نداید' );
+            this.router.navigateByUrl('/notAuthorized');
+            this.notifier.info( 'شما سطح دسترسی برای انجام عملیات مزبور را ندارید' );
         } else if (err.status === 400) {
-            this.router.navigateByUrl('/internalFlights/');
-            this.notifier.notify( 'error', 'برای انجام عملیات مزبور باید ابتدا وارد شوید' );
+            this.router.navigateByUrl('/login');
+            this.notifier.warn('برای انجام عملیات مزبور باید ابتدا وارد شوید' );
         } else if (err.status === 401) {
             this.router.navigateByUrl('/login');
-            this.notifier.notify( 'default', 'برای انجام عملیات مزبور باید ابتدا وارد شوید' );
+            this.notifier.default( 'برای انجام عملیات مزبور باید ابتدا وارد شوید' );
         } else {
             console.log(err);
-            // this.notifier.notify( 'error', 'اشکال در برقراری ارتباط با سرور' );
+            this.notifier.error( 'اشکال در برقراری ارتباط با سرور' );
         }
         throw err;
     }

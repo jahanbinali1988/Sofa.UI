@@ -6,6 +6,9 @@ import { ConfigService } from '../../services/Config.Service';
 import { LoginService } from '../../services/login.service';
 import { BrowserStorage } from '../../utilities/storage/browser-storage';
 import { Notification } from '../../utilities/notification/notification';
+import { Config } from '../../models/base/config';
+import { BehaviorSubject } from 'rxjs';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Component({
   selector: 'app-login',
@@ -13,8 +16,8 @@ import { Notification } from '../../utilities/notification/notification';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  config;
-  returnUrl: string = this.route.snapshot.queryParams['returnUrl'] + '/';
+  config: Config;
+  returnUrl : string;
   login = this.fb.group({
     username: ['', Validators.required],
     password: ['',[Validators.required, Validators.minLength(6)]]
@@ -27,10 +30,11 @@ export class LoginComponent implements OnInit {
     private loginService : LoginService, 
     private route: ActivatedRoute,
     private router: Router) {
-      this.config = configService.Get()
+      this.config = configService.Get();
    }
   
   ngOnInit(): void {
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
   }
 
   onSubmit(){
@@ -40,16 +44,17 @@ export class LoginComponent implements OnInit {
     };
     
     this.loginService.Login(loginObject).subscribe(res => {
-      console.log(res);
       if(res.access_token != ""){
         this.notifier.success("شما وارد سیستم شدید");
-        this.browserStorage.set(this.config.id_token, res.access_token);
-        this.browserStorage.set(this.config.refresh_token, res.refresh_token);
+        this.browserStorage.set(this.config.Token, res.access_token);
+        this.browserStorage.set(this.config.Refresh_Token, res.refresh_token);
+        //this.loginService.getCurentUserInfo();
+        this.router.navigateByUrl(this.returnUrl);
       }else{
-      
+        this.notifier.warn("مشخصات وارد شده صحیح نمی باشند");
       }
     }), error=> {
-      this.notifier.warn("مشخصات وارد شده صحیح نمی باشند");
+      this.notifier.error("خطا در سیستم");
     };
   }
 

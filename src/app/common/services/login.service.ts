@@ -2,15 +2,16 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/Http';
 import { Login } from '../models/base/Login';
 import { PermissionModel } from '../models/Base/PermissionModel';
-import { from, Observable } from 'rxjs';
+import { BehaviorSubject, from, Observable } from 'rxjs';
 import { TokenEndpointRequest } from '../models/messages/token/request/TokenEndpointRequest';
 import { ConfigService } from './Config.Service';
 import { BrowserStorage } from '../utilities/storage/browser-storage';
-import { TokenModel } from "../models/base/Token"
+import { Config } from '../models/base/config';
+import { GetCurrentUserInfoResponse } from '../models/messages/token/response/getCurrentUserInfoResponse';
+import { tap } from 'rxjs/internal/operators';
 @Injectable({ providedIn: 'root' })
 export class LoginService {
-
-  config;
+  config: Config;
   apiUrl: string;
   httpOptions = {
     headers: new HttpHeaders({
@@ -29,7 +30,7 @@ export class LoginService {
   }
 
   authenticationToken(): string {
-    return this.browserStorage.get(this.config.id_token);
+    return this.browserStorage.get(this.config.Token);
   }
 
   encodeParams(params: any): string {
@@ -55,6 +56,13 @@ export class LoginService {
       this.httpOptions);
   }
 
+  getCurentUserInfo() {
+    var url = `${this.apiUrl}/Profile/GetCurrentUserInfo`;
+    return this.http.get(url).subscribe(res=> {
+      console.log(res);
+    });
+  }
+  
   GetPermissions(username: string): Observable<PermissionModel> {
     const result = this.http.post<PermissionModel>('http://localhost:63926/api/auth/GetPermissions', JSON.stringify(username),
       this.httpOptions);
