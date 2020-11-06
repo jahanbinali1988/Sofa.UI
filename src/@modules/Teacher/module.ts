@@ -4,9 +4,7 @@ import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { teacherRoutes } from './routes';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { ServiceAuthInterceptor } from '../../app/common/Utilities/Interceptors/service-auth-interceptor';
-import { AuthGuard } from '../../app/common/utilities/authGurd/auth-guard.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
     declarations: [
@@ -20,13 +18,6 @@ import { AuthGuard } from '../../app/common/utilities/authGurd/auth-guard.servic
         HttpClientModule
     ],
     providers: [
-        // Athorization and authentication
-        AuthGuard,
-        {
-            provide: HTTP_INTERCEPTORS,
-            useClass: ServiceAuthInterceptor,
-            multi: true
-        }
     ]
 })
 export class TeacherModule {

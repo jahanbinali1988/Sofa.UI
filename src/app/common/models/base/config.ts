@@ -10,4 +10,7 @@ export class Config {
     SCOPE: string;
     Token : string;
     Refresh_Token : string;
+    ClientUserId : string;
+    ClientUserTitle : string;
+    ClientUserRole : string;
   }

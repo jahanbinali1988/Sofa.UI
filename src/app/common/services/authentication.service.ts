@@ -1,16 +1,16 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/Http';
 import { Login } from '../models/base/Login';
-import { PermissionModel } from '../models/Base/PermissionModel';
-import { BehaviorSubject, from, Observable } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
 import { TokenEndpointRequest } from '../models/messages/token/request/TokenEndpointRequest';
 import { ConfigService } from './Config.Service';
 import { BrowserStorage } from '../utilities/storage/browser-storage';
+import { Notification } from '../utilities/notification/notification';
 import { Config } from '../models/base/config';
-import { GetCurrentUserInfoResponse } from '../models/messages/token/response/getCurrentUserInfoResponse';
-import { tap } from 'rxjs/internal/operators';
-@Injectable({ providedIn: 'root' })
-export class LoginService {
+import { Router } from '@angular/router';
+
+@Injectable()
+export class AuthenticationService {
   config: Config;
   apiUrl: string;
   httpOptions = {
@@ -23,7 +23,9 @@ export class LoginService {
   constructor(
     private http: HttpClient,
     private configService: ConfigService,
-    private browserStorage: BrowserStorage
+    private browserStorage: BrowserStorage,
+    private notifier: Notification,
+    private router: Router
   ) {
     this.config = this.configService.Get();
     this.apiUrl = this.config.API_Url;
@@ -41,6 +43,15 @@ export class LoginService {
     return body = body.slice(0, body.length - 1);
   }
 
+  storeToken(body: any): void {
+    var decodeUserDetails = JSON.parse(window.atob(body.access_token.split('.')[1])); 
+    this.browserStorage.set(this.config.Token, body.access_token);
+    this.browserStorage.set(this.config.Refresh_Token, body.refresh_token);
+    this.browserStorage.set(this.config.ClientUserId, decodeUserDetails.client_userId);
+    this.browserStorage.set(this.config.ClientUserTitle, decodeUserDetails.client_userTitle);
+    this.browserStorage.set(this.config.ClientUserRole, decodeUserDetails.client_userRole);
+  }
+
   Login(login: Login) {
     const params: TokenEndpointRequest = {
       grant_type: this.config.GRANT_TYPE,
@@ -51,21 +62,22 @@ export class LoginService {
       password: login.Password
     };
     const body: string = this.encodeParams(params);
+
     return this.http.post<any>(this.config.TOKEN_ENDPOINT, 
       body,
-      this.httpOptions);
+      this.httpOptions).subscribe(res => {
+        if (res && res.access_token) {
+          this.storeToken(res);
+         } else {
+            this.notifier.warn("مشخصات وارد شده صحیح نمی باشند");
+          }
+       }, error => {
+           this.notifier.error(error);
+       });;
   }
 
-  getCurentUserInfo() {
-    var url = `${this.apiUrl}/Profile/GetCurrentUserInfo`;
-    return this.http.get(url).subscribe(res=> {
-      console.log(res);
-    });
-  }
-  
-  GetPermissions(username: string): Observable<PermissionModel> {
-    const result = this.http.post<PermissionModel>('http://localhost:63926/api/auth/GetPermissions', JSON.stringify(username),
-      this.httpOptions);
-    return result;
+  logout(){
+    this.browserStorage.removeAll();
+    this.router.navigate(["/login"]);
   }
 }

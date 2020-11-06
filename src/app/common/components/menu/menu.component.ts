@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Config } from '../../models/base/config';
 import { ConfigService } from '../../services/Config.Service';
-import { BrowserStorage } from '../../utilities/storage/browser-storage';
+import { AuthenticationService } from '../../services/authentication.service';
 
 @Component({
   selector: 'app-menu',
@@ -14,7 +14,7 @@ export class MenuComponent implements OnInit {
   title = 'Sofa';
   constructor(private configService: ConfigService,
     private router: Router,
-    private browserStorage: BrowserStorage) {
+    private authenticationService: AuthenticationService) {
     this.config = configService.Get();
    }
 
@@ -22,8 +22,7 @@ export class MenuComponent implements OnInit {
   }
 
   Logout(){
-    this.browserStorage.remove(this.config.Token);
-    this.browserStorage.remove(this.config.Refresh_Token);
+    this.authenticationService.logout();
     this.router.navigateByUrl('/');
   }
 }

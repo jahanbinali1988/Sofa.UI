@@ -4,7 +4,7 @@ import { Config } from '../models/base/config';
 declare const getProdConfigData: any;
 declare const getDevConfigData : any;
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class ConfigService {
   private config: Config;
 

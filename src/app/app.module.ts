@@ -2,7 +2,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { NotifierModule } from 'angular-notifier';
 import { appRoutes } from './app.routes';
@@ -15,13 +15,16 @@ import { MenuComponent } from './common/Components/menu/menu.component';
 import { LoginComponent } from './common/components/login/login.component';
 import { PageNotFoundComponent } from './common/Components/page-not-found/page-not-found.component';
 import { NotAuthorizedComponent } from './common/components/not-authorized/not-authorized.component';
-import { LoginService } from './common/services/login.service';
+import { AuthenticationService } from './common/services/authentication.service';
 import { HomeComponent } from './common/components/home/home.component';
 import { AboutUsComponent } from './common/components/about-us/about-us.component';
 import { ContactUsComponent } from './common/components/contact-us/contact-us.component';
 import { ConfigService } from './common/services/Config.Service';
 import { BrowserStorage } from './common/utilities/storage/browser-storage';
 import { Notification } from './common/utilities/notification/notification';
+import { JwtInterceptor } from './common/utilities/interceptors/jwt.interceptor';
+import { ErrorInterceptor } from './common/utilities/interceptors/error.interceptor';
+import { AuthGuard } from './common/utilities/authGurd/auth-guard.service';
 
 @NgModule({
   declarations: [
@@ -49,10 +52,15 @@ import { Notification } from './common/utilities/notification/notification';
     BrowserAnimationsModule
   ],
   providers: [
-    LoginService,
     ConfigService,
+    AuthenticationService,
     BrowserStorage,
-    Notification
+    AuthGuard,
+    Notification,
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+    //{ provide: HTTP_INTERCEPTORS, useClass: ErrorHandlingInterceptor, multi: true }
+    
   ],
   bootstrap: [
     AppComponent
