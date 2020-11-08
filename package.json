@@ -25,6 +25,7 @@
     "@angular/platform-browser-dynamic": "^9.0.7",
     "@angular/router": "^9.0.7",
     "@auth0/angular-jwt": "^5.0.1",
+    "angular": "^1.8.2",
     "angular-font-awesome": "^3.1.2",
     "angular-notifier": "^6.0.1",
     "bootstrap": "^3.4.1",
@@ -33,7 +34,7 @@
     "zone.js": "^0.10.3"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "^0.900.7",
+    "@angular-devkit/build-angular": "^0.1002.0",
     "@angular/cli": "^10.1.6",
     "@angular/compiler-cli": "^9.0.7",
     "@angular/language-service": "^9.0.7",
@@ -43,12 +44,12 @@
     "codelyzer": "^5.2.2",
     "jasmine-core": "~3.5.0",
     "jasmine-spec-reporter": "~4.2.1",
-    "karma": "~4.3.0",
+    "karma": "^5.2.3",
     "karma-chrome-launcher": "~3.1.0",
     "karma-coverage-istanbul-reporter": "~2.1.0",
     "karma-jasmine": "~2.0.1",
     "karma-jasmine-html-reporter": "^1.5.4",
-    "protractor": "^5.4.4",
+    "protractor": "^7.0.0",
     "ts-node": "~8.3.0",
     "tslint": "~5.18.0",
     "typescript": "~3.7.5"

@@ -25,4 +25,8 @@ export class MenuComponent implements OnInit {
     this.authenticationService.logout();
     this.router.navigateByUrl('/');
   }
+
+  isAllowed(caption : string) : boolean{
+    return true;
+  }
 }

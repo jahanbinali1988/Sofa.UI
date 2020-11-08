@@ -54,7 +54,7 @@ export class AuthenticationService {
 
   Login(login: Login) {
     const params: TokenEndpointRequest = {
-      grant_type: this.config.GRANT_TYPE,
+      grant_type: this.config.GRANT_TYPE,  
       client_id: this.config.CLIENT_ID,
       client_secret: this.config.CLIENT_SECRET,
       scope: this.config.SCOPE,

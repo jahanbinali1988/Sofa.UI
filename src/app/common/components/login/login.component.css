@@ -1,6 +1,3 @@
-@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,700);
-@import url(https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css);
-@import url(https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css);
 * {
   margin: 0;
   padding: 0;
@@ -76,7 +73,7 @@ body, input, button {
 }
 .login form button {
   margin-top: 20px;
-  background: #27AE60;
+  background: #e74c3c;
   border: none;
   font-size: 1.6em;
   font-weight: 300;
@@ -84,10 +81,10 @@ body, input, button {
   width: 100%;
   border-radius: 3px;
   color: #b3eecc;
-  border-bottom: 4px solid #1e8449;
+  border-bottom: 4px solid #e74c3c;
 }
 .login form button:hover {
-  background: #30b166;
+  background: #e61d1d;
   -webkit-animation: hop 1s;
   animation: hop 1s;
 }
@@ -108,7 +105,6 @@ body, input, button {
   transform: translateY(-3px);
 }
 
-/* Large Devices, Wide Screens */
 @media only screen and (max-width: 1200px) {
   .login {
     width: 600px;
@@ -122,7 +118,7 @@ body, input, button {
     font-size: 1.7em;
   }
 }
-/* Medium Devices, Desktops */
+
 @media only screen and (max-width: 992px) {
   .login {
     margin-top: 1%;
@@ -131,7 +127,7 @@ body, input, button {
     min-height: 0;
   }
 }
-/* Small Devices, Tablets */
+
 @media only screen and (max-width: 768px) {
   .login {
     margin-top: 0;
@@ -140,7 +136,7 @@ body, input, button {
     min-height: 0;
   }
 }
-/* Extra Small Devices, Phones */
+
 @media only screen and (max-width: 480px) {
   .login {
     margin-top: 0;
@@ -152,7 +148,7 @@ body, input, button {
     margin-top: 0;
   }
 }
-/* Custom, iPhone Retina */
+
 @media only screen and (max-width: 320px) {
   .login {
     margin-top: 0;
@@ -160,4 +156,4 @@ body, input, button {
     font-size: 0.7em;
     min-height: 0;
   }
-}
+} 

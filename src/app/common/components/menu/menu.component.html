@@ -1,4 +1,4 @@
-
+<!-- 
 <div id="custom-bootstrap-menu" class="navbar navbar-default" role="navigation">
     <div class="container">
       <div class="navbar-header">
@@ -31,4 +31,25 @@
             </ul>
         </div>
     </div>
-</div>
+</div> -->
+
+<ul class="menu">
+    <li title="home">
+        <a href="#" class="home">home</a>
+    </li>
+    <li title="pencil">
+        <a routerLink="/teacher/lesson" class="pencil">Lesson</a>
+    </li>
+    <li title="archive">
+        <a href="#" class="archive">archive</a>
+    </li>
+    <li title="About Us">
+        <a routerLink="/about-us" class="search">About Us</a>
+    </li>
+    <li title="Contact Us">
+        <a routerLink="/contact-us" class="contact">Contact Us</a>
+    </li>
+    <li title="Logout">
+        <a routerLink="/" class="active about" (click)="Logout();">Logout</a>
+    </li>
+</ul>
