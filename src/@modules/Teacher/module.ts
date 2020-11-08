@@ -14,7 +14,6 @@ import { HttpClientModule } from '@angular/common/http';
         FormsModule,
         ReactiveFormsModule,
         RouterModule.forChild(teacherRoutes),
-        // HttpClientModule after BrowserModule.
         HttpClientModule
     ],
     providers: [

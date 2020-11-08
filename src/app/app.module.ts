@@ -13,7 +13,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './components/app/app.component';
 import { MenuComponent } from './common/Components/menu/menu.component';
 import { LoginComponent } from './common/components/login/login.component';
-import { PageNotFoundComponent } from './common/Components/page-not-found/page-not-found.component';
 import { NotAuthorizedComponent } from './common/components/not-authorized/not-authorized.component';
 import { AuthenticationService } from './common/services/authentication.service';
 import { HomeComponent } from './common/components/home/home.component';
@@ -25,6 +24,7 @@ import { Notification } from './common/utilities/notification/notification';
 import { JwtInterceptor } from './common/utilities/interceptors/jwt.interceptor';
 import { ErrorInterceptor } from './common/utilities/interceptors/error.interceptor';
 import { AuthGuard } from './common/utilities/authGurd/auth-guard.service';
+import { PageNotFoundComponent } from './common/components/page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
