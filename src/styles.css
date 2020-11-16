@@ -2,7 +2,7 @@
 @import "../node_modules/angular-notifier/styles.css";
 
 /* kendo theme for material */
-@import "~@progress/kendo-theme-material/scss/all";
+@import "../node_modules/@progress/kendo-theme-default/dist/all.css";
 
 /* for material design */
 @import "~@angular/material/prebuilt-themes/deeppurple-amber.css";

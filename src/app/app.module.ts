@@ -11,7 +11,7 @@ import { CommonModule } from '@angular/common';
 // Kendo and material design references
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 // font awsome
-import { AngularFontAwesomeModule } from 'angular-font-awesome';
+//import { AngularFontAwesomeModule } from 'angular-font-awesome/dist/angular-font-awesome';
 
 import { AppComponent } from './components/app/app.component';
 import { MenuComponent } from './common/Components/menu/menu.component';
@@ -73,7 +73,7 @@ import { GridModule } from '@progress/kendo-angular-grid';
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    AngularFontAwesomeModule,
+    //AngularFontAwesomeModule,
     NotifierModule,
     HttpClientModule,
     RouterModule.forRoot(appRoutes,{

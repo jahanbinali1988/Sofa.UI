@@ -13,7 +13,7 @@ import { TermListComponent } from './pages/term/term-list/term-list.component';
 import { TermManageComponent } from './pages/term/term-manage/term-manage.component';
 
 export const adminstratorRoutes: Route[] = [
-    { path: '', component: HomeComponent, pathMatch: 'full' },
+    //{ path: '', component: HomeComponent, pathMatch: 'full' },
     
     { path: 'course', component: CourseListComponent, pathMatch: 'full', canActivate: [AuthGuard] },
     { path: 'course/:id', component: CourseManageComponent, pathMatch: 'full', canActivate: [AuthGuard] },
