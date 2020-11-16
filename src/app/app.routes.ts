@@ -10,7 +10,7 @@ import { AdminstratorModule } from 'src/@modules/Adminstrator/module';
 export const appRoutes = [
     { path: '', component: HomeComponent },
     { path: 'teacher', loadChildren: ()=> TeacherModule },
-    { path: 'admin', loadChildren: ()=> AdminstratorModule },
+    { path: 'adminstrator', loadChildren: ()=> AdminstratorModule },
     { path: 'about-us', component: AboutUsComponent },
     { path: 'contact-us', component: ContactUsComponent },
     { path: 'login', component: LoginComponent },

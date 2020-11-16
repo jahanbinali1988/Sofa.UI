@@ -8,7 +8,10 @@ import { NotifierModule } from 'angular-notifier';
 import { appRoutes } from './app.routes';
 import { CommonModule } from '@angular/common';
 
+// Kendo and material design references
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+// font awsome
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
 
 import { AppComponent } from './components/app/app.component';
 import { MenuComponent } from './common/Components/menu/menu.component';
@@ -46,12 +49,13 @@ import {MatSortModule} from '@angular/material/sort';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatTooltipModule} from '@angular/material/tooltip';
-import {MatDatepicker, MatCalendar} from '@angular/material/datepicker';
 import {MatTreeModule} from '@angular/material/tree';
 import {MatCardModule} from '@angular/material/card';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatButtonModule} from '@angular/material/button';
+import { GridModule } from '@progress/kendo-angular-grid';
+
   
 @NgModule({
   declarations: [
@@ -69,6 +73,7 @@ import {MatButtonModule} from '@angular/material/button';
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
+    AngularFontAwesomeModule,
     NotifierModule,
     HttpClientModule,
     RouterModule.forRoot(appRoutes,{
@@ -102,6 +107,7 @@ import {MatButtonModule} from '@angular/material/button';
     MatToolbarModule,
     MatTooltipModule,
     MatTreeModule,
+    GridModule,
   ],
   providers: [
     ConfigService,

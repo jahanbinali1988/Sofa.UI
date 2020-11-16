@@ -1,1 +1,39 @@
-<p>institute-manage works!</p>
+<h3 class="pull-right">
+    مدیریت موسسه
+</h3>
+<form [formGroup]="form">
+        <div class="form-group row manage-FormGroup">
+                <div class="col-md-6 manage-container">
+                        <mat-checkbox color="primary" formControlName="IsDisabled">فعال</mat-checkbox>
+                        <mat-checkbox color="primary" formControlName="IsDeleted">حذف شده</mat-checkbox>
+                </div>
+                <div class="col-md-6 manage-container">
+                        <mat-form-field>
+                                <input matInput placeholder="نام موسسه" formControlName="Title">
+                                <div *ngIf="Title.touched && Title.invalid" class="alert alert-danger">
+                                        <div *ngIf="Title.errors.required">
+                                                <mat-hint align="end">لطفا نام موسسهd مورد نظر را وارد کنید</mat-hint>
+                                        </div>
+                                        <div *ngIf="Title.errors.maxlength">
+                                                <mat-hint align="end">طول رشته وارد شده بیش از حد مجاز است</mat-hint>
+                                        </div>
+                            </div>
+                        </mat-form-field>
+                        <mat-form-field>
+                                <textarea matInput placeholder="توضیح" formControlName="Description"></textarea>
+                                <div *ngIf="Description.touched && Description.invalid" class="alert alert-danger">
+                                <div *ngIf="Description.errors.required">
+                                        <mat-hint align="end">لطفا توضیح مورد نظر را وارد کنید</mat-hint>
+                                </div>
+                                <div *ngIf="Description.errors.maxlength">
+                                        <mat-hint align="end">طول رشته وارد شده بیش از حد مجاز است</mat-hint>
+                                </div>
+                                </div>
+                        </mat-form-field>
+            </div>
+        </div>
+        <div class="box-footer">
+                <button mat-raised-button routerLink="/adminstrator/institute">بازگشت</button>
+                <button mat-flat-button (click)="Create()">ذخیره</button>
+        </div>
+</form>
