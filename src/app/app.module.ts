@@ -66,12 +66,12 @@ import { ErrorHandlingInterceptor } from './common/utilities/interceptors/error-
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
     //AngularFontAwesomeModule,
     NotifierModule,
-    HttpClientModule,
     RouterModule.forRoot(appRoutes,{
       paramsInheritanceStrategy: 'always'
   }),

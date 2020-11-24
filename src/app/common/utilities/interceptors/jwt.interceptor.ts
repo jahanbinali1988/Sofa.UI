@@ -1,17 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Notification } from 'src/app/common/utilities/notification/notification'
-import {
-    HttpInterceptor,
-    HttpRequest,
-    HttpResponse,
-    HttpHandler,
-    HttpEvent,
-    HttpErrorResponse
-} from '@angular/common/http';
-
 import { Observable, throwError } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 import { AuthenticationService } from '../../services/authentication.service';
+import { HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpResponse } from '@angular/common/http';
 
 @Injectable()
 export class JwtInterceptor implements HttpInterceptor {
