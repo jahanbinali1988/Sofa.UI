@@ -1,11 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
 @import "../node_modules/angular-notifier/styles.css";
 
-/* kendo theme for material */
-@import "../node_modules/@progress/kendo-theme-default/dist/all.css";
-
 /* for material design */
-@import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
 @import "bootstrap/dist/css/bootstrap.min.css";
 @import "font-awesome/css/font-awesome.css";
 

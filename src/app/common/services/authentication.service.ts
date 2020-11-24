@@ -35,6 +35,10 @@ export class AuthenticationService {
     return this.browserStorage.get(this.config.Token);
   }
 
+  clientUserId(): string{
+    return this.browserStorage.get(this.config.ClientUserId);
+  }
+
   encodeParams(params: any): string {
     let body = '';
     Object.keys(params).forEach(key => {

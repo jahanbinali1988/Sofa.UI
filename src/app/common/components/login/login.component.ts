@@ -1,4 +1,4 @@
-import { Component, Injectable, OnInit } from '@angular/core';
+import { Component, Injectable, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Login } from '../../models/base/Login';

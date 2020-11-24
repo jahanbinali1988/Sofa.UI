@@ -16,7 +16,6 @@ import { SessionManageComponent } from './pages/session/session-manage/session-m
 import { TermListComponent } from './pages/term/term-list/term-list.component';
 import { TermManageComponent } from './pages/term/term-manage/term-manage.component';
 import { InstituteService } from './services/institute-services';
-
 @NgModule({
     declarations: [
         CourseListComponent,

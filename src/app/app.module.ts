@@ -7,8 +7,6 @@ import { RouterModule } from '@angular/router';
 import { NotifierModule } from 'angular-notifier';
 import { appRoutes } from './app.routes';
 import { CommonModule } from '@angular/common';
-
-// Kendo and material design references
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 // font awsome
 //import { AngularFontAwesomeModule } from 'angular-font-awesome/dist/angular-font-awesome';
@@ -32,7 +30,7 @@ import { PageNotFoundComponent } from './common/components/page-not-found/page-n
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatDialogModule} from '@angular/material/dialog';
-import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatFormField, MatFormFieldModule} from '@angular/material/form-field';
 import {MatIconModule} from '@angular/material/icon';
 import {MatInputModule} from '@angular/material/input';
 import {MatListModule} from '@angular/material/list';
@@ -54,9 +52,7 @@ import {MatCardModule} from '@angular/material/card';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatButtonModule} from '@angular/material/button';
-import { GridModule } from '@progress/kendo-angular-grid';
-
-  
+import { ErrorHandlingInterceptor } from './common/utilities/interceptors/error-handling.interceptor.ts';
 @NgModule({
   declarations: [
     AppComponent,
@@ -66,7 +62,7 @@ import { GridModule } from '@progress/kendo-angular-grid';
     PageNotFoundComponent,
     HomeComponent,
     AboutUsComponent,
-    ContactUsComponent,
+    ContactUsComponent
   ],
   imports: [
     BrowserModule,
@@ -106,8 +102,34 @@ import { GridModule } from '@progress/kendo-angular-grid';
     MatTabsModule,
     MatToolbarModule,
     MatTooltipModule,
-    MatTreeModule,
-    GridModule,
+    MatTreeModule
+  ],
+  exports:[
+    MatAutocompleteModule,
+    MatButtonModule,
+    MatButtonToggleModule,
+    MatCardModule,
+    MatCheckboxModule,
+    MatDatepickerModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    MatIconModule,
+    MatInputModule,
+    MatListModule,
+    MatMenuModule,
+    MatProgressBarModule,
+    MatRadioModule,
+    MatRippleModule,
+    MatSelectModule,
+    MatBadgeModule,
+    MatSidenavModule,
+    MatSlideToggleModule,
+    MatSnackBarModule,
+    MatSortModule,
+    MatTabsModule,
+    MatToolbarModule,
+    MatTooltipModule,
+    MatTreeModule
   ],
   providers: [
     ConfigService,
@@ -116,9 +138,7 @@ import { GridModule } from '@progress/kendo-angular-grid';
     AuthGuard,
     Notification,
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
-    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
-    //{ provide: HTTP_INTERCEPTORS, useClass: ErrorHandlingInterceptor, multi: true }
-    
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
   ],
   bootstrap: [
     AppComponent

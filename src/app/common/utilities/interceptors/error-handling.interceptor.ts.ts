@@ -8,8 +8,7 @@ import { ServerValidation } from '../validators/server-validation';
 @Injectable()
 export class ErrorHandlingInterceptor implements HttpInterceptor {
   constructor(private notifier: Notification,
-              private serverValidation: ServerValidation) {
-  }
+              private serverValidation: ServerValidation) { }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     return next.handle(req)
@@ -22,7 +21,7 @@ export class ErrorHandlingInterceptor implements HttpInterceptor {
                 if (response.validationResults) {
                   this.serverValidation.messageBus.next(response.validationResults);
                 }
-                throw new Error(response.message);
+                this.notifier.error(response.message);
               }
             }
           }

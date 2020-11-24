@@ -1,7 +1,7 @@
 function getDevConfigData() {
   var config = {
-    API_Url: "http://localhost:63926/",
-    Server: "http://localhost:63926/",
+    API_Url: "https://localhost:44306/api",
+    Server: "https://localhost:44306/",
     TOKEN_ENDPOINT: "http://localhost:63926/connect/token",
     REVOCATION_ENDPOINT: "http://localhost:63926/connect/revocation",
     USERINFO_ENDPOINT: "http://localhost:63926/Profile/GetCurrentUserInfo",
@@ -20,8 +20,8 @@ function getDevConfigData() {
 
 function getProdConfigData() {
   var config = {
-    API_Url: "http://localhost:44306/api",
-    Server: "http://localhost:63926/connect/token",
+    API_Url: "https://localhost:44306/api",
+    Server: "https://localhost:44306/",
     TOKEN_ENDPOINT: "http://localhost:63926/connect/token",
     REVOCATION_ENDPOINT: "http://localhost:63926/connect/revocation",
     USERINFO_ENDPOINT: "http://localhost:44306/api/Profile/GetCurrentUserInfo",

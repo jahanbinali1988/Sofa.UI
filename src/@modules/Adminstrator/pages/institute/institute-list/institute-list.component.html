@@ -3,28 +3,6 @@
 </h3>
   
   <div id="filterPanel" class="row list-filter-Panel">
-    <button mat-flat-button [routerLink]="['/adminstrator/institute', 0]">ایجاد</button>
+    <button [routerLink]="['/adminstrator/institute', 0]">ایجاد</button>
   </div>
   
-  <kendo-grid [data]="gridData" [pageSize]="gridState.take" [skip]="gridState.skip" [sort]="gridState.sort" [filter]="gridState.filter"
-    [sortable]="false" [pageable]="true" [filterable]="false" (dataStateChange)="dataStateChange($event)">
-    <kendo-grid-column field="Id" hidden="hidden"></kendo-grid-column>
-    <kendo-grid-column field="Name" title="نام"></kendo-grid-column>
-    <kendo-grid-column field="Description" title="توضیح"></kendo-grid-column>
-    <kendo-grid-column field="IsDisabled" title="غیرفعال" width="120">
-      <ng-template kendoGridCellTemplate let-dataItem>
-        <input type="checkbox" [checked]="dataItem.IsDisabled" (click)="Disable(dataItem.Id)" />
-      </ng-template>
-    </kendo-grid-column>
-    <kendo-grid-column field="IsDeleted" title="حذف" width="120">
-      <ng-template kendoGridCellTemplate let-dataItem>
-        <input type="checkbox" [checked]="dataItem.IsDeleted" (click)="Remove(dataItem.Id)" />
-      </ng-template>
-    </kendo-grid-column>
-    <kendo-grid-column width="80" title="عملیات">
-      <ng-template kendoGridCellTemplate let-dataItem>
-        <a class="btn btn-small" [routerLink]="['/adminstrator/institute', dataItem.Id]"><span class="fa fa-pencil-square-o"
-            aria-hidden="true"></span></a>
-      </ng-template>
-    </kendo-grid-column>
-  </kendo-grid>

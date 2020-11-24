@@ -1,23 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Observable } from 'rxjs';
 import { AddInstituteResponse } from 'src/@modules/Adminstrator/Messages/Response/add-institute-response';
-import { Institute } from 'src/@modules/Adminstrator/models/instittue';
 import { InstituteService } from 'src/@modules/Adminstrator/services/institute-services';
-import { ValueText } from 'src/app/common/models/base/ValueText';
 import { Notification } from 'src/app/common/utilities/notification/notification';
-import {map, startWith} from 'rxjs/operators';
 import { ActivatedRoute } from '@angular/router';
-
+import { AddInstituteRequest } from 'src/@modules/Adminstrator/Messages/Request/add-institute-request';
+import { GetInstituteRequest } from 'src/@modules/Adminstrator/Messages/Request/get-institute-request';
+import { AuthenticationService } from 'src/app/common/services/authentication.service';
 @Component({
   selector: 'app-institute-manage',
   templateUrl: './institute-manage.component.html',
   styleUrls: ['./institute-manage.component.css']
 })
 export class InstituteManageComponent implements OnInit {
-  AirlineItems: ValueText[] = [];
-  filteredOptions: Observable<ValueText[]>;
-
   form = new FormGroup({    Id: new FormControl('', Validators.required),
     Title: new FormControl('', [Validators.required, Validators.maxLength(50)]),
     Code: new FormControl('', [Validators.required, Validators.maxLength(50)]),
@@ -28,17 +23,19 @@ export class InstituteManageComponent implements OnInit {
     IsActive: new FormControl('false', Validators.required),
     IsDeleted: new FormControl('false', Validators.required),
     RowVersion: new FormControl(0, Validators.required),
-
-    AirlineCaption: new FormControl('', Validators.required)
   });
 
   constructor(private instituteService: InstituteService, 
     private route: ActivatedRoute, 
-    private notifier: Notification) {
+    private notifier: Notification,
+    private authenticationService: AuthenticationService) {
 
       this.route.paramMap.subscribe(params => {
-        if (+params.get('id') > 0) {
-          this.instituteService.Get(+params.get('id'))
+        if (+this.Id > 0) {
+          const getByIdRequest: GetInstituteRequest = {
+            InstituteId: this.Id
+          }
+          this.instituteService.Get(getByIdRequest)
           .subscribe(response => {
             const data = response.Institute;
               this.form.patchValue({Id: data['Id']});
@@ -58,36 +55,19 @@ export class InstituteManageComponent implements OnInit {
   }
 
   ngOnInit() {
-   this.form.controls.AirlineCaption.valueChanges.pipe(
-      startWith(''),
-      map(value => {
-        this._filter(value);
-      })
-    ).subscribe(response => {
-      return response;
-    });
-  }
 
-  autoCompleteOnChange(text) {
-    this.form.patchValue({AirlineId:
-      this.AirlineItems.find(c => c.Text === text).Value});
   }
 
   public Create() {
-    const institute: Institute = {
-      Id: this.Id.value,
-      Title: this.Title.value,
-      Code: this.Code.value,
-      WebsiteUrl: this.WebsiteUrl.value,
-      CreateDate: this.CreateDate.value,
+    const request: AddInstituteRequest = {
       Address: this.Address.value,
-      Description: this.Description.value,
+      Code: this.Code.value,
       IsActive: this.IsActive.value,
-      IsDeleted: this.IsDeleted.value,
-      ModifyDate: this.ModifyDate.value,
-      RowVersion: this.RowVersion.value
-    };
-    this.instituteService.Create(institute).subscribe( response => {
+      Title: this.Title.value,
+      WebsiteUrl: this.WebsiteUrl.value,
+      CommanderID: this.authenticationService.clientUserId()
+    }
+    this.instituteService.Create(request).subscribe( response => {
       const result: AddInstituteResponse = response;
       if (result.IsSuccess === true) {
         this.notifier.success( result.Message );
@@ -95,19 +75,6 @@ export class InstituteManageComponent implements OnInit {
         this.notifier.warn( result.Message );
       }
     });
-  }
-
-  private _filter(value: string): ValueText[] {
-    const items: ValueText[] = [];
-    this.instituteService.Search_Institute(value).subscribe(response => {
-      for (const key in response.Data) {
-        if (response.Data.hasOwnProperty(key)) {
-          items.push({Value: response.Data[key].Value, Text: response.Data[key].Text});
-        }
-      }
-    });
-    this.AirlineItems = items;
-    return items;
   }
 
   get Id() {

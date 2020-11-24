@@ -4,15 +4,19 @@
       <form [formGroup]="login">
   
         <div class="input-group input-group-lg">
-          <span class="input-group-addon"><i class="fa fa-user"></i></span>
-          <input type="text" class="form-control" formControlName="username" placeholder="Username or email">
+          <span class="input-group-addon">
+            <i class="fa fa-user" aria-hidden="true"></i>
+          </span>
+          <input type="text" class="form-control" formControlName="username" placeholder="Username">
           <small *ngIf="Username.touched && !Username.valid" class="text-danger support-text">
             نام کاربری اجباری است
           </small>
         </div>
   
           <div class="input-group input-group-lg">
-            <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+            <span class="input-group-addon">
+              <i class="fa fa-lock"></i>
+            </span>
             <input type="password" class="form-control" formControlName="password" placeholder="Password">
             <small *ngIf="Password.touched && !Password.valid && Password.value.errors?.requiered" class="text-danger support-text">
                 کلمه عبور اجباری است
