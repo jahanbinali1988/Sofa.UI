@@ -1,5 +1,4 @@
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -52,7 +51,6 @@ import {MatCardModule} from '@angular/material/card';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatButtonModule} from '@angular/material/button';
-import { ErrorHandlingInterceptor } from './common/utilities/interceptors/error-handling.interceptor.ts';
 @NgModule({
   declarations: [
     AppComponent,
@@ -76,7 +74,6 @@ import { ErrorHandlingInterceptor } from './common/utilities/interceptors/error-
       paramsInheritanceStrategy: 'always'
   }),
     // tslint:disable-next-line: deprecation
-    HttpModule,
     BrowserAnimationsModule,
     MatAutocompleteModule,
     MatButtonModule,
