@@ -13,22 +13,23 @@ import { catchError } from 'rxjs/operators';
 export class ErrorInterceptor implements HttpInterceptor {
   constructor(
     private authenticationService: AuthenticationService,
-    private notificationService: Notification
+    private notification: Notification
   ) { }
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
     return next.handle(request).pipe(catchError(err => {
-      if (err.status === 400) {
+      console.log('ErrorInterceptor');
+      if (err.status == 400) {
         if (err.error.message) {
-          return throwError(err.error.message);
+          this.notification.error(err.error.message);
         } else {
-          return throwError('خطا در برقراری ارتباط! لطفا با ادمین سامانه تماس بگیرید');
+          this.notification.error('خطا در برقراری ارتباط! لطفا با ادمین سیستم تماس بگیرید');
         }
-      } else if (err.status === 401) {
+      } else if (err.status == 401) {
         this.authenticationService.logout();
-      } else if (err.status === 0) {
-        this.notificationService.error('خطا در برقراری ارتباط! لطفا با ادمین سامانه تماس بگیرید');
+      } else if (err.status == 0) {
+        this.notification.error('خطا در برقراری ارتباط! لطفا با ادمین سیستم تماس بگیرید');
       }
 
       const error = err.message || err.statusText;
