@@ -39,7 +39,7 @@ import {MatRadioModule} from '@angular/material/radio';
 import {MatRippleModule} from '@angular/material/core';
 import {MatSelectModule} from '@angular/material/select';
 import {MatBadgeModule} from '@angular/material/badge';
-import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatSidenavContent, MatSidenavModule} from '@angular/material/sidenav';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatSortModule} from '@angular/material/sort';
@@ -51,6 +51,7 @@ import {MatCardModule} from '@angular/material/card';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatButtonModule} from '@angular/material/button';
+import { ErrorHandlingInterceptor } from './common/utilities/interceptors/error-handling.interceptor.ts';
 @NgModule({
   declarations: [
     AppComponent,
@@ -92,7 +93,6 @@ import {MatButtonModule} from '@angular/material/button';
     MatRippleModule,
     MatSelectModule,
     MatBadgeModule,
-    MatSidenavModule,
     MatSlideToggleModule,
     MatSnackBarModule,
     MatSortModule,
@@ -102,6 +102,7 @@ import {MatButtonModule} from '@angular/material/button';
     MatTreeModule
   ],
   exports:[
+    BrowserAnimationsModule,
     MatAutocompleteModule,
     MatButtonModule,
     MatButtonToggleModule,
@@ -119,7 +120,6 @@ import {MatButtonModule} from '@angular/material/button';
     MatRippleModule,
     MatSelectModule,
     MatBadgeModule,
-    MatSidenavModule,
     MatSlideToggleModule,
     MatSnackBarModule,
     MatSortModule,
@@ -135,7 +135,8 @@ import {MatButtonModule} from '@angular/material/button';
     AuthGuard,
     Notification,
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
-    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorHandlingInterceptor, multi: true }
   ],
   bootstrap: [
     AppComponent

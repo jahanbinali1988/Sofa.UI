@@ -1,39 +1,63 @@
-<!-- 
-<div id="custom-bootstrap-menu" class="navbar navbar-default" role="navigation">
-    <div class="container">
-      <div class="navbar-header">
-          <a class="navbar-brand" href="#">
-              <span class="glyphicon glyphicon-fire"></span>
-            </a>
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-menubuilder"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
-            </button>
-        </div>
-        <div class="collapse navbar-collapse navbar-menubuilder">
-            <ul class="nav navbar-nav navbar-left">
-                <li routerLinkActive="active current">
-                    <a routerLink="" class="hvr-underline-reveal">Home</a>
+<div class="area"></div>
+    <nav class="main-menu">
+            <ul>
+                <li>
+                    <a routerLink="/">
+                        <i class="fa fa-home fa-2x"></i>
+                        <span class="nav-text">
+                            Home
+                        </span>
+                    </a>
+
                 </li>
-                <li routerLinkActive="active current">
-                    <a routerLink="/teacher/lesson" class="hvr-underline-reveal">Lesson Plan</a>
+                <li class="has-subnav">
+                    <a routerLink="/adminstrator/institute">
+                        <i class="fa fa-laptop fa-2x"></i>
+                        <span class="nav-text">
+                            Institute
+                        </span>
+                    </a>
                 </li>
-                <li routerLinkActive="active current">
-                    <a routerLink="/about-us" class="hvr-underline-reveal">About Us</a>
+                <li>
+                    <a routerLink="/teacher/lesson">
+                        <i class="fa fa-table fa-2x"></i>
+                        <span class="nav-text">
+                            Lesson
+                        </span>
+                    </a>
                 </li>
-                <li routerLinkActive="active current">
-                    <a routerLink="/contact-us" class="hvr-underline-reveal">Contact Us</a>
+                <li>
+                    <a routerLink="/about-us">
+                        <i class="fa fa-map-marker fa-2x"></i>
+                        <span class="nav-text">
+                            About Us
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a routerLink="/contact-us">
+                        <i class="fa fa-info fa-2x"></i>
+                        <span class="nav-text">
+                            Contact Us
+                        </span>
+                    </a>
                 </li>
             </ul>
 
-            <ul class="nav navbar-nav navbar-right">
-                <li routerLinkActive="active current">
-                    <a routerLink="/" class="hvr-underline-reveal" (click)="Logout();">Log out</a>
-                </li>
+            <ul class="logout">
+                <li>
+                    <a routerLink="/" class="active about" (click)="Logout();">
+                        <i class="fa fa-power-off fa-2x"></i>
+                        <span class="nav-text">
+                            Logout
+                        </span>
+                    </a>
+                </li>  
             </ul>
-        </div>
-    </div>
-</div> -->
+        </nav>
 
-<ul class="menu">
+
+<!-- <ul class="menu">
     <li title="home">
         <a routerLink="/" class="home">home</a>
     </li>
@@ -55,4 +79,4 @@
     <li title="Logout">
         <a routerLink="/" class="active about" (click)="Logout();">Logout</a>
     </li>
-</ul>
+</ul> -->

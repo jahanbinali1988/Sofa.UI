@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/Http';
 import { Login } from '../models/base/Login';
-import { BehaviorSubject, Subject } from 'rxjs';
 import { TokenEndpointRequest } from '../models/messages/token/request/TokenEndpointRequest';
 import { ConfigService } from './Config.Service';
 import { BrowserStorage } from '../utilities/storage/browser-storage';
@@ -66,7 +65,6 @@ export class AuthenticationService {
       password: login.Password
     };
     const body: string = this.encodeParams(params);
-
     return this.http.post<any>(this.config.TOKEN_ENDPOINT, 
       body,
       this.httpOptions).subscribe(res => {

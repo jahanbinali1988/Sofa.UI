@@ -1,202 +1,128 @@
- .menu {
-   position: fixed;
-   top: 0;
-   left: 0;
-   height: 100%;
-   list-style-type: none;
-   margin: 0;
-   padding: 0;
-   background: #fff4f5;
- }
- .menu li a{
-     display:block;
-     height:em;
-     width:5em;
-     text-indent:-500em;
-     line-height:5em;
-     text-align:center;
-     color: #ff5c62;
-     background: #fff4f5;
-     position: relative;
-     border-bottom: 1px solid #ffe2e3;
-     transition: background 0.3s ease-in-out;
- }
- .menu li a:before {
-   font-family: FontAwesome;
-   speak-as: none;
-   text-indent: 0em;
-   position: absolute;
-   top: 0;
-   left: 0;
-   width: 100%;
-   height: 100%;
-   font-size: 1.4em;
- }
- .menu li a.search:before {
-   content: "\f002";
- }
- .menu li a.archive:before {
-   content: "\f187";
- }
- .menu li a.pencil:before {
-   content: "\f040";
- }
- .menu li a.contact:before {
-   content: "\f003";
- }
- .menu li a.about:before {
-   content: "\f007";
- }
- .menu li a.home:before {
-   content: "\f015";
- }
- .menu li a:hover{
-   background: #ff5c62;
-   color: #fff;
- }
- .menu li.current a {
-   background: #ff5e5e;
-   color: #fff;
- }
- .menu li a.active {
-   background: #ff5e5e;
-   color: #fff;
- }
- .menu li a.active:after{
-     position:absolute;
-     left:5em;
-     top:0;
-     content:"";
-     border:2.5em solid transparent;
-     border-left-color:#ff5c62;
-     border-width: 2.5em 1em
- }
- .menu li{
-     position:relative;
- }
- .menu li:after{
-     content: attr(title);
-     position:absolute;
-     left:5em;
-     top:0;
-     height:5em;
-     -webkit-box-sizing: border-box;
-     -moz-box-sizing: border-box;
-     box-sizing: border-box;
-     text-transform:uppercase;
-     background:#ff5c62;
-     padding:2em;
-     transition: all 0.3s ease-in-out;
-     visibility:hidden;
-     opacity:0;
- }
- .menu li:hover:after{
-     visibility:visible;
-     opacity:1;
- }
- @media screen and (max-height: 34em){
-   .menu li{
-     font-size:70%;
-   }
- }@import url("//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.min.css");
-.menu {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 100%;
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  background: #fff4f5;
+@import url(//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css);
+@import url(https://fonts.googleapis.com/css?family=Titillium+Web:300);
+.fa-2x {
+font-size: 2em;
 }
-.menu li a{
-    display:block;
-    height:em;
-    width:5em;
-    text-indent:-500em;
-    line-height:5em;
-    text-align:center;
-    color: #ff5c62;
-    background: #fff4f5;
-    position: relative;
-    border-bottom: 1px solid #ffe2e3;
-    transition: background 0.3s ease-in-out;
+.fa {
+position: relative;
+display: table-cell;
+width: 60px;
+height: 36px;
+text-align: center;
+vertical-align: middle;
+font-size:20px;
 }
-.menu li a:before {
-  font-family: FontAwesome;
-  speak-as: none;
-  text-indent: 0em;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  font-size: 1.4em;
+
+
+.main-menu:hover,nav.main-menu.expanded {
+width:250px;
+overflow:visible;
 }
-.menu li a.search:before {
-  content: "\f002";
+
+.main-menu {
+background:#212121;
+border-right:1px solid #e5e5e5;
+position:absolute;
+top:0;
+bottom:0;
+height:100%;
+left:0;
+width:60px;
+overflow:hidden;
+-webkit-transition:width .05s linear;
+transition:width .05s linear;
+-webkit-transform:translateZ(0) scale(1,1);
+z-index:1000;
 }
-.menu li a.archive:before {
-  content: "\f187";
+
+.main-menu>ul {
+margin:7px 0;
 }
-.menu li a.pencil:before {
-  content: "\f040";
+
+.main-menu li {
+position:relative;
+display:block;
+width:250px;
 }
-.menu li a.contact:before {
-  content: "\f003";
+
+.main-menu li>a {
+position:relative;
+display:table;
+border-collapse:collapse;
+border-spacing:0;
+color:#999;
+ font-family: arial;
+font-size: 14px;
+text-decoration:none;
+-webkit-transform:translateZ(0) scale(1,1);
+-webkit-transition:all .1s linear;
+transition:all .1s linear;
+  
 }
-.menu li a.about:before {
-  content: "\f007";
+
+.main-menu .nav-icon {
+position:relative;
+display:table-cell;
+width:60px;
+height:36px;
+text-align:center;
+vertical-align:middle;
+font-size:18px;
 }
-.menu li a.home:before {
-  content: "\f015";
+
+.main-menu .nav-text {
+position:relative;
+display:table-cell;
+vertical-align:middle;
+width:190px;
+  font-family: 'Titillium Web', sans-serif;
 }
-.menu li a:hover{
-  background: #ff5c62;
-  color: #fff;
+
+.main-menu>ul.logout {
+position:absolute;
+left:0;
+bottom:0;
 }
-.menu li.current a {
-  background: #ff5e5e;
-  color: #fff;
+
+.no-touch .scrollable.hover {
+overflow-y:hidden;
 }
-.menu li a.active {
-  background: #ff5e5e;
-  color: #fff;
+
+.no-touch .scrollable.hover:hover {
+overflow-y:auto;
+overflow:visible;
 }
-.menu li a.active:after{
-    position:absolute;
-    left:5em;
-    top:0;
-    content:"";
-    border:2.5em solid transparent;
-    border-left-color:#ff5c62;
-    border-width: 2.5em 1em
+
+a:hover,a:focus {
+text-decoration:none;
 }
-.menu li{
-    position:relative;
+
+nav {
+-webkit-user-select:none;
+-moz-user-select:none;
+-ms-user-select:none;
+-o-user-select:none;
+user-select:none;
 }
-.menu li:after{
-    content: attr(title);
-    position:absolute;
-    left:5em;
-    top:0;
-    height:5em;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-    text-transform:uppercase;
-    background:#ff5c62;
-    padding:2em;
-    transition: all 0.3s ease-in-out;
-    visibility:hidden;
-    opacity:0;
+
+nav ul,nav li {
+outline:0;
+margin:0;
+padding:0;
 }
-.menu li:hover:after{
-    visibility:visible;
-    opacity:1;
+.main-menu li:hover>a,nav.main-menu li.active>a,.dropdown-menu>li>a:hover,.dropdown-menu>li>a:focus,.dropdown-menu>.active>a,.dropdown-menu>.active>a:hover,.dropdown-menu>.active>a:focus,.no-touch .dashboard-page nav.dashboard-menu ul li:hover a,.dashboard-page nav.dashboard-menu ul li.active a {
+color:#fff;
+background-color:#5fa2db;
 }
-@media screen and (max-height: 34em){
-  .menu li{
-    font-size:70%;
-  }
+.area {
+float: left;
+background: #e2e2e2;
+width: 100%;
+height: 100%;
+}
+@font-face {
+  font-family: 'Titillium Web';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Titillium WebLight'), local('TitilliumWeb-Light'), url(http://themes.googleusercontent.com/static/fonts/titilliumweb/v2/anMUvcNT0H1YN4FII8wpr24bNCNEoFTpS2BTjF6FB5E.woff) format('woff');
 }

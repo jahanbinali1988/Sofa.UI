@@ -1,32 +1,31 @@
-<div class="login">
-    <div class="heading">
-      <h2>Sign in</h2>
-      <form [formGroup]="login">
-  
-        <div class="input-group input-group-lg">
-          <span class="input-group-addon">
-            <i class="fa fa-user" aria-hidden="true"></i>
-          </span>
-          <input type="text" class="form-control" formControlName="username" placeholder="Username">
-          <small *ngIf="Username.touched && !Username.valid" class="text-danger support-text">
-            نام کاربری اجباری است
-          </small>
-        </div>
-  
-          <div class="input-group input-group-lg">
-            <span class="input-group-addon">
-              <i class="fa fa-lock"></i>
-            </span>
-            <input type="password" class="form-control" formControlName="password" placeholder="Password">
-            <small *ngIf="Password.touched && !Password.valid && Password.value.errors?.requiered" class="text-danger support-text">
-                کلمه عبور اجباری است
-            </small>
-            <small *ngIf="Password.touched && !Password.valid && Password.value.errors?.minLength" class="text-danger support-text">
-                کلمه عبور باید حداقل ۸ کاراکتر باشد
-            </small>
-        </div>
-  
-          <button type="button" (click)="onSubmit()" class="float" >Login</button>
-        </form>
-    </div>
+<mat-card>
+  <mat-card-title>Login</mat-card-title>
+<mat-card-content>
+<form [formGroup]="login" >
+<p>
+  <mat-form-field>
+    <input type="text" matInput formControlName="username" placeholder="Username">
+    <small *ngIf="Username.touched && !Username.valid" class="text-danger support-text">
+      نام کاربری اجباری است
+    </small>
+  </mat-form-field>
+</p>
+
+<p>
+  <mat-form-field>
+    <input type="password" matInput formControlName="password" placeholder="Password">
+    <small *ngIf="Password.touched && !Password.valid && Password.value.errors?.requiered" class="text-danger support-text">
+      کلمه عبور اجباری است
+  </small>
+  <small *ngIf="Password.touched && !Password.valid && Password.value.errors?.minLength" class="text-danger support-text">
+      کلمه عبور باید حداقل ۸ کاراکتر باشد
+  </small>
+  </mat-form-field>
+</p>
+<div class="button">
+  <button type="button" (click)="onSubmit()" mat-button>Login</button>
 </div>
+
+</form>
+</mat-card-content>
+</mat-card>

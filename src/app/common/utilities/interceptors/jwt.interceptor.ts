@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
-import { Notification } from 'src/app/common/utilities/notification/notification'
 import { Observable, throwError } from 'rxjs';
-import { map, catchError } from 'rxjs/operators';
 import { AuthenticationService } from '../../services/authentication.service';
+import { Notification } from 'src/app/common/utilities/notification/notification';
 import { HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpResponse } from '@angular/common/http';
+import { map } from 'rxjs/internal/operators/map';
+import { catchError } from 'rxjs/operators';
 
 @Injectable()
 export class JwtInterceptor implements HttpInterceptor {
@@ -16,11 +17,9 @@ export class JwtInterceptor implements HttpInterceptor {
             request = request.clone({ headers: request.headers.set('Authorization', 'Bearer ' + currentUserToken) });
         }
 
-        if (!request.headers.has('Content-Type')) {
-            request = request.clone({ headers: request.headers.set('Content-Type', 'application/json') });
-        }
-
-        request = request.clone({ headers: request.headers.set('Accept', 'application/json') });
+        // if (!request.headers.has('Content-Type')) {
+        //     request = request.clone({ headers: request.headers.set('Content-Type', 'application/json') });
+        // }
 
         return next.handle(request).pipe(
             map((event: HttpEvent<any>) => {

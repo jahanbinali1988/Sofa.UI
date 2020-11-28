@@ -3,12 +3,12 @@ import {HttpEvent, HttpInterceptor, HttpHandler, HttpRequest, HttpResponse} from
 import {Observable} from 'rxjs';
 import {Notification} from 'src/app/common/utilities/notification/notification';
 import {tap} from 'rxjs/operators';
-import { ServerValidation } from '../validators/server-validation';
-
+import { ServerValidation } from 'src/app/common/utilities/validators/server-validation';
 @Injectable()
 export class ErrorHandlingInterceptor implements HttpInterceptor {
-  constructor(private notifier: Notification,
-              private serverValidation: ServerValidation) { }
+  constructor(private notification: Notification,
+              private serverValidation: ServerValidation) {
+  }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     return next.handle(req)
@@ -20,8 +20,8 @@ export class ErrorHandlingInterceptor implements HttpInterceptor {
               if (!response.isSuccess && response.type !== 'FeatureCollection') {
                 if (response.validationResults) {
                   this.serverValidation.messageBus.next(response.validationResults);
+                  throw new Error(response.message);
                 }
-                this.notifier.error(response.message);
               }
             }
           }
