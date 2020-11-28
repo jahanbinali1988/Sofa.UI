@@ -24,8 +24,8 @@ export class JwtInterceptor implements HttpInterceptor {
         return next.handle(request).pipe(
             map((event: HttpEvent<any>) => {
                 if (event instanceof HttpResponse) {
-                    console.warn('event--->>>', event);
-                    this.notifier.error(event.statusText);
+                    if(event.status == 200)
+                    this.notifier.success("شما وارد سیستم شدید");
                 }
                 return event;
             }),
