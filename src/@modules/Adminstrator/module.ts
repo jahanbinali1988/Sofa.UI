@@ -15,7 +15,10 @@ import { SessionListComponent } from './pages/session/session-list/session-list.
 import { SessionManageComponent } from './pages/session/session-manage/session-manage.component';
 import { TermListComponent } from './pages/term/term-list/term-list.component';
 import { TermManageComponent } from './pages/term/term-manage/term-manage.component';
-import { InstituteService } from './services/institute-services';
+import { InstituteService } from './services/institute.service';
+import { UserListComponent } from './pages/user/user-list/user-list.component';
+import { UserManageComponent } from './pages/user/user-manage/user-manage.component';
+import { UserService } from './services/user.service';
 @NgModule({
     declarations: [
         CourseListComponent,
@@ -27,7 +30,9 @@ import { InstituteService } from './services/institute-services';
         SessionListComponent,
         SessionManageComponent,
         TermListComponent,
-        TermManageComponent
+        TermManageComponent,
+        UserListComponent,
+        UserManageComponent
     ],
     imports: [
         CommonModule,
@@ -37,7 +42,8 @@ import { InstituteService } from './services/institute-services';
         HttpClientModule
     ],
     providers: [
-        InstituteService
+        InstituteService,
+        UserService
     ]
 })
 export class AdminstratorModule {

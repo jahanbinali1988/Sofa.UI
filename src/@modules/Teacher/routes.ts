@@ -9,7 +9,7 @@ import { PostListComponent } from './Pages/post/post-list/post-list.component';
 import { PostManageComponent } from './Pages/post/post-manage/post-manage.component';
 
 export const teacherRoutes: Route[] = [
-    //{ path: '', component: HomeComponent, pathMatch: 'full' },
+    { path: '', component: HomeComponent, pathMatch: 'full' },
     
     { path: 'lesson', component: LessonListComponent, pathMatch: 'full', canActivate: [AuthGuard] },
     { path: 'lesson/:id', component: LessonManageComponent, pathMatch: 'full', canActivate: [AuthGuard] },
@@ -17,6 +17,6 @@ export const teacherRoutes: Route[] = [
     { path: 'lessonplan', component: LessonPlanListComponent, pathMatch: 'full', canActivate: [AuthGuard] },
     { path: 'lessonplan/:id', component: LessonPlanManageComponent, pathMatch: 'full', canActivate: [AuthGuard] },
 
-    { path: 'lessonplan', component: PostListComponent, pathMatch: 'full', canActivate: [AuthGuard] },
+    { path: 'post', component: PostListComponent, pathMatch: 'full', canActivate: [AuthGuard] },
     { path: 'post/:id', component: PostManageComponent, pathMatch: 'full', canActivate: [AuthGuard] }
 ];

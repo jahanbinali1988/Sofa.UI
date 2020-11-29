@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { AddInstituteResponse } from 'src/@modules/Adminstrator/Messages/Response/add-institute-response';
-import { InstituteService } from 'src/@modules/Adminstrator/services/institute-services';
+import { AddInstituteResponse } from 'src/@modules/Adminstrator/Messages/institute/Response/add-institute-response';
+import { InstituteService } from 'src/@modules/Adminstrator/services/institute.service';
 import { Notification } from 'src/app/common/utilities/notification/notification';
 import { ActivatedRoute } from '@angular/router';
-import { AddInstituteRequest } from 'src/@modules/Adminstrator/Messages/Request/add-institute-request';
-import { GetInstituteRequest } from 'src/@modules/Adminstrator/Messages/Request/get-institute-request';
+import { AddInstituteRequest } from 'src/@modules/Adminstrator/Messages/institute/Request/add-institute-request';
+import { GetInstituteRequest } from 'src/@modules/Adminstrator/Messages/institute/Request/get-institute-request';
 import { AuthenticationService } from 'src/app/common/services/authentication.service';
 @Component({
   selector: 'app-institute-manage',

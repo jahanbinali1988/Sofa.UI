@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Institute } from 'src/@modules/Adminstrator/models/instittue';
-import { InstituteService } from 'src/@modules/Adminstrator/services/institute-services';
+import { InstituteService } from 'src/@modules/Adminstrator/services/institute.service';
 import { Notification } from 'src/app/common/utilities/notification/notification';
-import { DeleteInstituteResponse } from 'src/@modules/Adminstrator/Messages/Response/delete-institute-response';
-import { GetAllInstituteRrequest } from 'src/@modules/Adminstrator/Messages/Request/get-all-institute-request';
-import { DeleteInstituteRequest } from 'src/@modules/Adminstrator/Messages/Request/delete-institute-request';
+import { DeleteInstituteResponse } from 'src/@modules/Adminstrator/Messages/institute/Response/delete-institute-response';
+import { GetAllInstituteRrequest } from 'src/@modules/Adminstrator/Messages/institute/Request/get-all-institute-request';
+import { DeleteInstituteRequest } from 'src/@modules/Adminstrator/Messages/institute/Request/delete-institute-request';
 import { AuthenticationService } from 'src/app/common/services/authentication.service';
 
 @Component({

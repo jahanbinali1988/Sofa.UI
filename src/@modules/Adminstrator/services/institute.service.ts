@@ -4,21 +4,22 @@ import { Observable } from 'rxjs';
 import { OperationStatus } from 'src/app/common/models/base/OperationStatus';
 import { Config } from 'src/app/common/models/base/config';
 import { ConfigService } from 'src/app/common/services/Config.Service';
-import { AddInstituteResponse } from '../Messages/Response/add-institute-response';
-import { UpdateInstituteResponse } from '../Messages/Response/update-institute-response';
-import { GetInstituteResponse } from '../Messages/Response/get-institute-response';
-import { GetAllInstituteResponse } from '../Messages/Response/get-all-institute-response';
-import { DeleteInstituteResponse } from '../Messages/Response/delete-institute-response';
-import { GetAllInstituteRrequest } from '../Messages/Request/get-all-institute-request';
-import { AddInstituteRequest } from '../Messages/Request/add-institute-request';
-import { GetInstituteRequest } from '../Messages/Request/get-institute-request';
-import { UpdateInstituteRequest } from '../Messages/Request/update-institue-request';
-import { DeleteInstituteRequest } from '../Messages/Request/delete-institute-request';
+import { AddInstituteResponse } from '../Messages/institute/Response/add-institute-response';
+import { UpdateInstituteResponse } from '../Messages/institute/Response/update-institute-response';
+import { GetInstituteResponse } from '../Messages/institute/Response/get-institute-response';
+import { GetAllInstituteResponse } from '../Messages/institute/Response/get-all-institute-response';
+import { DeleteInstituteResponse } from '../Messages/institute/Response/delete-institute-response';
+import { GetAllInstituteRrequest } from '../Messages/institute/Request/get-all-institute-request';
+import { AddInstituteRequest } from '../Messages/institute/Request/add-institute-request';
+import { GetInstituteRequest } from '../Messages/institute/Request/get-institute-request';
+import { UpdateInstituteRequest } from '../Messages/institute/Request/update-institue-request';
+import { DeleteInstituteRequest } from '../Messages/institute/Request/delete-institute-request';
 
 @Injectable({
   providedIn: 'root'
 })
 export class InstituteService {
+
     config: Config;
     apiUrl: string;
     httpOptions = {
@@ -31,7 +32,7 @@ export class InstituteService {
     private configService: ConfigService ) {
     this.config = this.configService.Get();
     this.apiUrl = this.config.API_Url + '/Institute';
-   }
+  }
 
   Create (request: AddInstituteRequest): Observable<AddInstituteResponse> {
     return this.http.post<AddInstituteResponse>(this.apiUrl + '/Add', request, this.httpOptions);

@@ -11,9 +11,11 @@ import { SessionListComponent } from './pages/session/session-list/session-list.
 import { SessionManageComponent } from './pages/session/session-manage/session-manage.component';
 import { TermListComponent } from './pages/term/term-list/term-list.component';
 import { TermManageComponent } from './pages/term/term-manage/term-manage.component';
+import { UserListComponent } from './pages/user/user-list/user-list.component';
+import { UserManageComponent } from './pages/user/user-manage/user-manage.component';
 
 export const adminstratorRoutes: Route[] = [
-    //{ path: '', component: HomeComponent, pathMatch: 'full' },
+    { path: '', component: HomeComponent, pathMatch: 'full' },
     
     { path: 'course', component: CourseListComponent, pathMatch: 'full', canActivate: [AuthGuard] },
     { path: 'course/:id', component: CourseManageComponent, pathMatch: 'full', canActivate: [AuthGuard] },
@@ -28,5 +30,8 @@ export const adminstratorRoutes: Route[] = [
     { path: 'session/:id', component: SessionManageComponent, pathMatch: 'full', canActivate: [AuthGuard] },
 
     { path: 'term', component: TermListComponent, pathMatch: 'full', canActivate: [AuthGuard] },
-    { path: 'term/:id', component: TermManageComponent, pathMatch: 'full', canActivate: [AuthGuard] }
+    { path: 'term/:id', component: TermManageComponent, pathMatch: 'full', canActivate: [AuthGuard] },
+
+    { path: 'user', component: UserListComponent, pathMatch: 'full', canActivate: [AuthGuard] },
+    { path: 'user/:id', component: UserManageComponent, pathMatch: 'full', canActivate: [AuthGuard] }
 ];
