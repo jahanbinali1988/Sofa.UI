@@ -1,5 +1,4 @@
 import { Route } from '@angular/router';
-import { HomeComponent } from 'src/app/common/components/home/home.component';
 import { AuthGuard } from '../../app/common/utilities/authGurd/auth-guard.service';
 import { CourseListComponent } from './pages/course/course-list/course-list.component';
 import { CourseManageComponent } from './pages/course/course-manage/course-manage.component';
@@ -14,9 +13,7 @@ import { TermManageComponent } from './pages/term/term-manage/term-manage.compon
 import { UserListComponent } from './pages/user/user-list/user-list.component';
 import { UserManageComponent } from './pages/user/user-manage/user-manage.component';
 
-export const adminstratorRoutes: Route[] = [
-    { path: '', component: HomeComponent, pathMatch: 'full' },
-    
+export const adminstratorRoutes: Route[] = [    
     { path: 'course', component: CourseListComponent, pathMatch: 'full', canActivate: [AuthGuard] },
     { path: 'course/:id', component: CourseManageComponent, pathMatch: 'full', canActivate: [AuthGuard] },
 
